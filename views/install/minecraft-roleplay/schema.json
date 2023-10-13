@@ -1,0 +1,74 @@
+[
+    {
+        "table": "bank_operations",
+        "primary_key": "id",
+        "keys": [
+            "id",
+            "sender_id",
+            "receiver_id"
+        ],
+        "relations": {
+            "players": [
+                {
+                    "id": "sender_id",
+                    "this.sender_type": "CITIZEN"
+                },
+                {
+                    "id": "receiver_id",
+                    "this.receiver_type": "CITIZEN"
+                }
+            ]
+        }
+    },
+    {
+        "table": "companies",
+        "primary_key": "id",
+        "keys": [
+            "id",
+            "player_id"
+        ],
+        "relations": {
+            "bank_operations": [
+                {
+                    "sender_id": "id",
+                    "sender_type": "COMPANY"
+                },
+                {
+                    "receiver_id": "id",
+                    "receiver_type": "COMPANY"
+                }
+            ],
+            "players": [
+                {
+                    "id": "player_id"
+                }
+            ]
+        }
+    },
+    {
+        "table": "players",
+        "primary_key": "id",
+        "keys": [
+            "id",
+            "uuid",
+            "nickname"
+        ],
+        "relations": {
+            "bank_operations": [
+                {
+                    "sender_id": "id",
+                    "sender_type": "CITIZEN"
+                },
+                {
+                    "receiver_id": "id",
+                    "receiver_type": "CITIZEN"
+                }
+            ],
+            "companies": [
+                {
+                    "player_id": "id"
+                }
+            ]
+        }
+    }
+]

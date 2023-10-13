@@ -1,0 +1,6 @@
+{
+  "require": {
+    "sergeytsalkov/meekrodb": "*",
+    "guzzlehttp/guzzle": "^7.8"
+  }
+}

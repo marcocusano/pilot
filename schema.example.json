@@ -1,0 +1,29 @@
+[
+    {
+        "table": "users",
+        "methods": ["GET"],
+        "primary_key": "id",
+        "relation_key": "user_id",
+        "relations": [
+            "user_documents",
+            "user_vehicles"
+        ]
+    },
+    {
+        "table": "vehicles",
+        "methods": ["GET", "POST", "PATCH", "DELETE"],
+        "primary_key": "id",
+        "relations": {
+            "user_vehicles": "vehicle",
+            "documents": "vehicle_id"
+        }
+    },
+    {
+        "table": "documents",
+        "priamry_key": "id",
+        "relation_key": "document_id",
+        "relations": [
+            "user_documents"
+        ]
+    }
+]

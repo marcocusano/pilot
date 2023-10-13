@@ -1,0 +1,18 @@
+[
+    {
+        "table": "test_users",
+        "primary_key": "id",
+        "relation_key": "user_id",
+        "relations": [
+            "test_user_documents"
+        ]
+    },
+    {
+        "table": "test_user_documents",
+        "methods": ["GET"],
+        "primary_key": "user_id",
+        "relations": {
+            "test_users": "id"
+        }
+    }
+]
