@@ -15,11 +15,11 @@ Useful for applications in [ReactJS](https://legacy.reactjs.org/) or [Vue.js](ht
 4. Follow the easy step-by-step guide, by visiting the index;
 5. Enojoy your API Pilot.
 
-## Guides
-- [Execute your first API call](#)
-- [Protect your JSON configuration files](#)
-- [API Tokens reset](#) (Coming to the next release)
-- [Applications](#) (Under development)
+## Wiki
+- [Configs.json](https://github.com/marcocusano/pilot/wiki/Configs.json)
+- [Schema.json](https://github.com/marcocusano/pilot/wiki/Schema.json)
+- [Requests](https://github.com/marcocusano/pilot/wiki/Requests)
+- [Applications](https://github.com/marcocusano/pilot/wiki/Applications)
 
 # Vue-Pilot
 A [Vue.js](https://vuejs.org) library to integrate Pilot Framework, using [Axios](https://axios-http.com/docs/intro), with both JavaScript and TypeScript support.\
