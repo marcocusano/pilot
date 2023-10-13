@@ -7,3 +7,6 @@
 
 # MySQL
 /var
+
+# Composer
+/src/vendor
