@@ -1,0 +1,20 @@
+[
+    {
+        "name": "scratch",
+        "display_name": "Scratch",
+        "database": true,
+        "schema": true
+    },
+    {
+        "name": "test",
+        "display_name": "Test Mode",
+        "database": true,
+        "schema": true
+    },
+    {
+        "name": "minecraft-roleplay",
+        "display_name": "Minecraft Roleplay",
+        "database": false,
+        "schema": true
+    }
+]

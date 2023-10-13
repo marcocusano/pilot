@@ -1,2 +1,2 @@
-# pilot
-Slim PHP Framework for your API's based web application.
+# Pilot
+PHP Framework for API's based applications

@@ -1,0 +1,5 @@
+{
+    "availableSoon": "Available soon!",
+    "missingToken": "Missing Authorization Token",
+    "databaseConnection": "There was an error while trying to connect to your Database."
+}

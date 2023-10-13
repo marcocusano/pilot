@@ -1,0 +1,50 @@
+version: "3"
+name: "pilot"
+services:
+
+    mysql:
+        image: mysql:${MYSQL_VERSION}
+        container_name: pilot_mysql
+        restart: "no"
+        env_file:
+            - ".env"
+        environment:
+            - DB_HOST=${MYSQL_HOST}
+            - MYSQL_HOST=${MYSQL_HOST}
+            - MYSQL_DATABASE=${MYSQL_DATABASE}
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+            - MYSQL_USER=${MYSQL_USER}
+            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+        ports:
+            - ${MYSQL_PORT}
+        volumes:
+            - "${SOURCE_MYSQL}"
+
+    phpmyadmin:
+        container_name: pilot_phpmyadmin
+        image: phpmyadmin/phpmyadmin
+        ports:
+            - "${PHP_ADMIN_PORT}"
+        environment:
+            #- PMA_ARBITRARY=1
+            - PMA_HOST=${MYSQL_HOST}
+            - UPLOAD_LIMIT=${MYSQL_UPLOAD_LIMIT}
+        restart: "no"
+        depends_on:
+            - mysql
+
+    php:
+        container_name: pilot_php
+        image: php:${PHP_VERSION}-apache
+        restart: "no"
+        ports:
+            - ${PHP_PORT}
+        volumes:
+            - "${PHP_INI}"
+            - "${SOURCE_PHP}"
+            - "${APACHE_CONFIG}"
+        depends_on:
+            - mysql
+        command: >
+            bash -c "docker-php-ext-install mysqli && docker-php-entrypoint apache2-foreground"
+        

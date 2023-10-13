@@ -1,0 +1,9 @@
+# Global
+.*.swp
+.DS_Store
+
+# VSCode
+.vscode/
+
+# MySQL
+/var

@@ -1,0 +1,35 @@
+# Options +SymLinksIfOwnerMatch -MultiViews
+RewriteEngine On
+RewriteBase /
+
+###### Security
+## Redirect HTTPS
+## Uncomment the following 3 lines if you are in production
+# RewriteCond %{HTTPS} off
+# RewriteCond %{HTTP:X-Forwarded-Proto} !https
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+## Redirect HTTPS for www.
+## Uncomment the following 3 lines if you are in production and not a sub-domain
+# RewriteCond %{HTTP_HOST} !^www\. [NC]
+# RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+## .JSON Redirection
+## The following line will push a forbidden message. The next one is a redirect to a /403
+# RewriteRule \.json$ - [F] # Uncomment me for a Server Forbidden message, instead
+RewriteRule ^.*\.json$ /403 [R=301,L] 
+## .SQL Redirection
+RewriteRule ^.*\.sql$ /403 [R=301,L] 
+## .PHP Redirection
+RewriteRule ^.*\.php$ / [R=301,L] 
+
+# REWRITE
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^/].*)$ /?params=$1 [L,QSA,NC]
+
+###### API
+# Authorization
+RewriteRule .* - [e=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+# Request methods
+<Limit GET POST PATCH DELETE>
+    Require all granted
+</Limit>
